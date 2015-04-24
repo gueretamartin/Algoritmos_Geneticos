@@ -1,55 +1,56 @@
-
 /* Trabajo Práctica Ruleta, Algoritmos Geneticos */
 package algoritmos_geneticos;
+import java.util.ArrayList;
 import java.util.Random;
 /**
 
  * @author Martin Guereta
  */
 public class Ruleta {
+    
+    /* Declaro un arreglo de String de 10x30 */
+    
+       static String[][] cromosomas = new String[10][30];
 
     public static void main(String[] args) {
+    
+        /* Declaro un constructor de la clase Random */
+        
         Random rnd = new Random();
         
+        /* Declaro un ArrayList de cromosomas del tipo String */
         
-                  int[][] cromosomas = new int[10][30];
-                  String[] string = new String[10];
-                    String numero="";
-                    long[] numeroBinarioConvertir = new long[10];  
-
-                 
-           for(int i=0;i<10;i++){
-               for (int j=0;j<30;j++){
-           cromosomas[i][j]= (int)(rnd.nextDouble()*2 +0);
-       numero = numero + Integer.toString(cromosomas[i][j]); 
-               }
-                string[i]=numero;
-              numero="" ;   
+        ArrayList<String> cro = new ArrayList<String>();
+        
+      
+        for(int i=0;i<10;i++){
+            String c="";
+                for (int j=0;j<30;j++){
+                    /* Le doy valor a una posicion de la matriz */
+            cromosomas[i][j]= String.valueOf((int)(rnd.nextDouble()*2 +0));
+                    /* Guardo el valor del numero en esa posicion */
+            c=c+cromosomas[i][j];
+                } 
+                /* guardo el String de 30 numeros binarios en el ArrayList
+                    de cromosomas */
+     
+                cro.add(c);
      }
         
          for(int i=0;i<10;i++){
                for (int j=0;j<30;j++){
            System.out.print(cromosomas[i][j]);
-               }      System.out.println(" ");
+               }      System.out.println(" "+dameDecimal(cro.get(i).toString()));
 
-     }
-for(int i=0;i<10;i++){ System.out.println(string[i]);}
-for(int i=0;i<10;i++){ 
-long BinarioConvertir = Long.parseLong(string[i]); 
-        long salidaDecimal=0;
-        long contador=1;
-        long auxDecimal=0;
-        while(BinarioConvertir>0){
-            /*Sacamos el residuo de la operacion el cual multiplacaremos por la variable auxDecimal */ 
-            auxDecimal= BinarioConvertir%2;
-        } 
- //Vamos sumando y guardando en la variable salidaDecimal la operacion 
-        salidaDecimal=salidaDecimal+auxDecimal*contador;
-        //Dividimo estre diez numero
-       BinarioConvertir/=10; 
-        contador=contador*2; 
-      
-       numeroBinarioConvertir[i]=salidaDecimal;
-       }}
- }   
- 
+    	}
+			
+	}
+
+        /*Funcion que transforma el Binario en un decimal*/
+		private static int dameDecimal(String cromos2) {
+		
+		 String nroBinario = cromos2.toString();
+		int num = Integer.parseInt(nroBinario,2);
+		return num;
+	}
+}	
