@@ -10,6 +10,8 @@ public class Ruleta {
 	static int[] cromosomasDecimal = new int[10];
 	static float[] valoresEnFuncion = new float[10];
         static float[] valoresFitness = new float[10];
+    static float[] porcentajeFit = new float[10];
+
         static float sumatoriaObj=0;
         static float sumatoriaFit=0;
         static float maxObj=0;
@@ -17,7 +19,7 @@ public class Ruleta {
 	static float pc = (float) 0.75;
 	static float pm = (float) 0.05;
 	static   float promeObj,promeFit=0;
-        static int[] ruleta = new int[100];
+        static ArrayList<Integer> ruleta = new ArrayList<Integer>();
         static ArrayList<String> cro = new ArrayList<String>();
 
         //Comienzo del programa
@@ -66,8 +68,11 @@ public class Ruleta {
    
                  }
                 
+                                  for(int i=0;i<10;i++){
+
+                porcentajeFit[i]=(valoresFitness[i])*100;
                 //Obtengo los promedios
-                 
+                                  }
                 promeObj=sumatoriaObj/10;
                 promeFit=sumatoriaFit/10;
                 
@@ -80,7 +85,7 @@ public class Ruleta {
 			{
 				System.out.print(cromosomas[i][j]);
 			}
-			System.out.println(" "+cromosomasDecimal[i]+" "+valoresEnFuncion[i]+" "+(valoresFitness[i]/*fitness*/)+" "+(valoresFitness[i]/*fitness*/)*100);
+			System.out.println(" "+cromosomasDecimal[i]+" "+valoresEnFuncion[i]+" "+valoresFitness[i]+" "+porcentajeFit[i]);
 		
 		}
 		;
@@ -93,7 +98,83 @@ public class Ruleta {
                 System.out.println("\tMáximo de la Objetiva:    " + (maxObj));
 
                 
-	}
+                //Comenzamos ruleta
+                int sum=0,min=0,max=0;
+                for(int i=0;i<10;i++){
+             int trunca = Math.round(porcentajeFit[i]);
+             
+             // sum=sum+Math.round(porcentajeFit[i]);
+             //System.out.println(sum);
+             
+             if (trunca==0)
+             {
+                 max=max+1;
+             //    sum=sum+1;
+             }
+             else
+             {
+                 max=max+trunca;
+             }
+
+             for (int j=min;j<(max);j++)
+             {                
+                 ruleta.add(i);                           
+             }
+             min=max;
+                }
+                for(Integer nro : ruleta)
+                {
+                    System.out.print(nro);
+                }
+                System.out.println(" ");
+                
+        
+        
+        String[] tiradas = new String[10];
+        String[] probCross = new String[5];
+        System.out.println("\nTiradas");
+        for(int i=0;i<10;i++)
+        {
+            tiradas[i] = String.valueOf((int)(rnd.nextDouble()*ruleta.size()+0));
+            System.out.println(tiradas[i]);
+        }
+        
+        System.out.println("\nProb de Cross");
+        for(int j=0;j<5;j++)
+        {
+            probCross[j] = String.valueOf((int)(rnd.nextDouble()*100+1));
+            System.out.println(probCross[j]);
+        }
+        
+        int a=0,b=1;
+        for(int j=0,i=0;j<5;j++)
+        {    
+            if(Integer.valueOf(probCross[j])<=75)
+            {
+             int corte = (int)(rnd.nextDouble()*30+0);
+             int numeroTirada1 = Integer.valueOf(tiradas[a]);
+             int numeroTirada2 = Integer.valueOf(tiradas[b]);
+             
+             int nro1 = ruleta.get(numeroTirada1);
+             int nro2 = ruleta.get(numeroTirada2);
+             
+             
+            }
+            else
+            {
+                
+            }
+            a=a+2;
+            b=b+2;
+        }
+        
+       
+        
+        
+        
+        
+        
+        }
 
             //Funcion que recibe un objeto cromosoma devuelve un decimal
         
