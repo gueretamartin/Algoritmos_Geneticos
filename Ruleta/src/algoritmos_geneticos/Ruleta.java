@@ -147,7 +147,7 @@ public class Ruleta {
         }
         
         int a=0,b=1;
-        for(int j=0,i=0;j<5;j++)
+        for(int j=0;j<5;j++)
         {    
             if(Integer.valueOf(probCross[j])<=75)
             {
@@ -158,6 +158,10 @@ public class Ruleta {
              int nro1 = ruleta.get(numeroTirada1);
              int nro2 = ruleta.get(numeroTirada2);
              
+             int ubicacion = (int)(rnd.nextDouble()*29+0);
+             
+             cro.get(nro1);
+             cro.get(nro2);
              
             }
             else
@@ -168,14 +172,12 @@ public class Ruleta {
             b=b+2;
         }
         
-       
-        
-        
-        
-        
-        
         }
 
+            
+            
+        
+        
             //Funcion que recibe un objeto cromosoma devuelve un decimal
         
 	private static int dameDecimal(String cromos2) {
