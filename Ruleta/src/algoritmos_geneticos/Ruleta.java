@@ -1,10 +1,10 @@
-﻿package Algoritmos_Geneticos;
+package algoritmos_geneticos;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Ruleta {
 
-	//Declaración de variables
+	//Declaraci�n de variables
 	static int pc = 75;
 	static int pm = 5;
 	static float[] sumaObjetivaXpoblacion = new float[22];
@@ -12,7 +12,7 @@ public class Ruleta {
 	static float[] promXpoblacion = new float[22];
 	static float[] minCromoXpoblacion = new float[22];
 
-	
+
 	//Comienzo del programa
 	public static void main(String[] args)
 	{	 
@@ -70,7 +70,7 @@ public class Ruleta {
 		promeFit=sumatoriaFit/10;
 
 		//Muestro todo
-		System.out.println("\t\tPoblación inicial\n");
+		System.out.println("\t\tPoblaci�n inicial\n");
 		System.out.println("POBLACION (BINARIO)\t\tDECIMAL\tFUNCION OBJ\tFITNESS\tPORCENTAJE");
 		for(int i=0;i<10;i++)
 		{
@@ -85,9 +85,9 @@ public class Ruleta {
 		System.out.println("\tSumatoria de la Objetiva: " + (sumatoriaObj));
 		System.out.println("\tPromedio del Fitness:     " + (promeFit));
 		System.out.println("\tPromedio de la Objetiva:  " + (promeObj));
-		System.out.println("\tMáximo del Fitness:       " + (maxFit));
-		System.out.println("\tMáximo de la Objetiva:    " + (maxObj));
-		System.out.println("\tMínimo de la Objetiva:    " + (minObj));
+		System.out.println("\tM�ximo del Fitness:       " + (maxFit));
+		System.out.println("\tM�ximo de la Objetiva:    " + (maxObj));
+		System.out.println("\tM�nimo de la Objetiva:    " + (minObj));
 		
 		sumaObjetivaXpoblacion[0] = sumatoriaObj;
 		maxCromoXpoblacion[0] = maxObj;
@@ -101,11 +101,11 @@ public class Ruleta {
 			System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			if(n!=0)
 			{				
-				System.out.println("\nVamos a crear a partir de esta población de los mejores hijos, una nueva población...");
+				System.out.println("\nVamos a crear a partir de esta poblaci�n de los mejores hijos, una nueva poblaci�n...");
 			}
 			else
 			{
-				System.out.println("\nVamos a crear a partir de esta población inicial, una nueva población...");
+				System.out.println("\nVamos a crear a partir de esta poblaci�n inicial, una nueva poblaci�n...");
 			}
 
 			// asignarValoresFuncion(cro);
@@ -140,7 +140,7 @@ public class Ruleta {
 			{
 				System.out.print(nro);
 			}
-			System.out.println("\nTamaño ruleta:"+ruleta.size());
+			System.out.println("\nTama�o ruleta:"+ruleta.size());
 			System.out.println(" ");
 
 			String[] tiradas = new String[10];
@@ -216,8 +216,8 @@ public class Ruleta {
 				System.out.println(c);
 			}
 
-			System.out.println("\nAhora vamos a ver cuáles de estos hijos puede llegar a mutar (Porcentaje de mutación: "+pm+")...");
-			// Now, i´m going to create the mutation
+			System.out.println("\nAhora vamos a ver cu�les de estos hijos puede llegar a mutar (Porcentaje de mutaci�n: "+pm+")...");
+			// Now, i�m going to create the mutation
 			for(int i=0;i<10;i++)
 			{
 				int nroRandom = (int)(rnd.nextDouble()*100+1);
@@ -229,7 +229,7 @@ public class Ruleta {
 					String cromoMuta=nuevaPobla.get(i);
 					char[] cromoMu = cromoMuta.toCharArray();
 					
-					System.out.println("\nEl cromosoma hijo "+i+" va a mutar en el gen ubicado en la posición: "+ubicacion);
+					System.out.println("\nEl cromosoma hijo "+i+" va a mutar en el gen ubicado en la posici�n: "+ubicacion);
 					System.out.println("Antes:\n"+cromoMuta);
 					
 					if(cromoMuta.charAt(ubicacion) == '0')
@@ -242,7 +242,7 @@ public class Ruleta {
 					}
 					
 					cromoMuta= new String(cromoMu);
-					System.out.println("Después:\n"+cromoMuta+"\n");
+					System.out.println("Despu�s:\n"+cromoMuta+"\n");
 
 					cromoMutados.add(cromoMuta);
 				}
@@ -276,7 +276,7 @@ public class Ruleta {
 			promObj=sumaObj/10;
 			promFit=sumaFit/10;
 
-			System.out.println("\nFinalmente, la POBLACIÓN "+(n+1)+" RESULTANTE es: \n");
+			System.out.println("\nFinalmente, la POBLACI�N "+(n+1)+" RESULTANTE es: \n");
 
 			System.out.println("POBLACION (BINARIO)\t\tDECIMAL\tFUNCION OBJ\tFITNESS\tPORCENTAJE");
 			for(int i=0;i<10;i++)
@@ -288,23 +288,20 @@ public class Ruleta {
 			System.out.println("\tSumatoria de la Objetiva: " + (sumaObj));
 			System.out.println("\tPromedio del Fitness:     " + (promFit));
 			System.out.println("\tPromedio de la Objetiva:  " + (promObj));
-			System.out.println("\tMáximo del Fitness:       " + (maxF));
-			System.out.println("\tMáximo de la Objetiva:    " + (maxO));
-			System.out.println("\tMínimo de la Objetiva:    " + (minO));
+			System.out.println("\tM�ximo del Fitness:       " + (maxF));
+			System.out.println("\tM�ximo de la Objetiva:    " + (maxO));
+			System.out.println("\tM�nimo de la Objetiva:    " + (minO));
 
 			sumaObjetivaXpoblacion[l] = sumaObj;
 			maxCromoXpoblacion[l] = maxO;
 			promXpoblacion[l] = promObj;
 			minCromoXpoblacion[l] = minO;
 
-		}
+		};
+			
+			PoblacionFinal eje = new PoblacionFinal(sumaObjetivaXpoblacion,minCromoXpoblacion,minCromoXpoblacion,promXpoblacion);
 		
-		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println("\nPoblación"+"\t"+"Sumatoria F. Objetiva"+"\t"+"Max F.Objetiva"+"\t"+"Min F.Objetiva"+"\t"+"Promedio F. Objetivo");
-		for(int i=0;i<21;i++)
-		{
-			System.out.println(i+"\t\t"+sumaObjetivaXpoblacion[i]+"\t\t"+maxCromoXpoblacion[i]+"\t"+minCromoXpoblacion[i]+"\t\t"+promXpoblacion[i]);
-		}
+		
 
 	}
 
@@ -382,7 +379,7 @@ public class Ruleta {
 	}
 
 	//Funcion que recibe un objeto cromosoma devuelve un decimal
-
+	
 	private static int dameDecimal(String cromos2) {
 		String nroBinario = cromos2.toString();
 		int num = Integer.parseInt(nroBinario,2);
